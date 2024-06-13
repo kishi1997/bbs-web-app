@@ -6,7 +6,7 @@ import {
   CardContent,
   CardFooter,
   Card,
-} from "./components/ui/card";
+} from "./ui/card";
 import Link from "next/link";
 
 const BBSCard = () => {
