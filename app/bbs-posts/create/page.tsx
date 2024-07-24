@@ -1,5 +1,4 @@
 "use client";
-import { postBBS } from "@/app/actions/postBBS";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -13,7 +12,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -32,7 +30,6 @@ export const formSchema = z.object({
 });
 
 const Page = () => {
-  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,9 +38,8 @@ const Page = () => {
       content: "",
     },
   });
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    const { username, title, content } = values;
-    await postBBS({ username, title, content });
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
   }
   return (
     <Form {...form}>
